@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Supercraft SiteBuilder
  * Description: Human-guided AI website builder child plugin for Supercraft Master Plugin ecosystem.
- * Version: 1.0.0
+ * Version: 1.0.27
  * Author: Supercraft
  * Text Domain: supercraft-sitebuilder
  */
@@ -11,7 +11,7 @@ if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly
 }
 
-define('SUPERCRAFT_SITEBUILDER_VERSION', '1.0.26');
+define('SUPERCRAFT_SITEBUILDER_VERSION', '1.0.27');
 define('SUPERCRAFT_SITEBUILDER_PATH', plugin_dir_path(__FILE__));
 define('SUPERCRAFT_SITEBUILDER_URL', plugin_dir_url(__FILE__));
 
@@ -25,6 +25,19 @@ if (defined('SUPERCRAFT_SUPERAPP_URL')) {
 }
 
 define('SUPERCRAFT_SUPERAPP_ENDPOINT', $endpoint);
+
+/**
+ * GitHub Auto-Update Checker
+ */
+if (file_exists(SUPERCRAFT_SITEBUILDER_PATH . 'plugin-update-checker/plugin-update-checker.php')) {
+    require_once SUPERCRAFT_SITEBUILDER_PATH . 'plugin-update-checker/plugin-update-checker.php';
+    $supercraft_sitebuilder_update_checker = YahnisElsts\PluginUpdateChecker\v5\PucFactory::buildUpdateChecker(
+        'https://github.com/lynesslim/supercraft-sitebuilder/',
+        __FILE__,
+        'supercraft-sitebuilder'
+    );
+    $supercraft_sitebuilder_update_checker->setBranch('main');
+}
 
 /**
  * License Validation Helper Function
@@ -155,6 +168,26 @@ function supercraft_sitebuilder_render_admin_page() {
     }
 
     $is_master_active = has_filter('supercraft_is_plugin_validated');
+    $is_validated = supercraft_sitebuilder_is_validated();
+
+    if (!$is_validated) {
+        ?>
+        <div class="wrap supercraft-sitebuilder-wrap" style="max-width:800px; margin-top:20px;">
+            <h1>Supercraft AI SiteBuilder</h1>
+            <div class="notice notice-error" style="background:#fff; border-left:4px solid #ef4444; padding:20px 24px; border-radius:8px; box-shadow:0 1px 3px rgba(0,0,0,0.05); margin-top:16px;">
+                <h3 style="margin-top:0; color:#b91c1c; font-size:16px;">⚠️ Supercraft License Required</h3>
+                <p style="font-size:13px; color:#334155; line-height:1.6; margin-bottom:16px;">
+                    Supercraft AI SiteBuilder is a premium module and requires an active validated license managed through the <strong>Supercraft Master Plugin</strong>.
+                </p>
+                <a href="<?php echo esc_url(admin_url('admin.php?page=supercraft-master')); ?>" class="button button-primary button-large" style="background:#4f46e5; border-color:#4338ca;">
+                    Open Supercraft Master Plugin Dashboard &rarr;
+                </a>
+            </div>
+        </div>
+        <?php
+        return;
+    }
+
     $status = get_option('supercraft_sitebuilder_validation_status', 'not_set');
     
     // Handle clearing the last generation or business context
@@ -819,6 +852,10 @@ function supercraft_sitebuilder_render_admin_page() {
  * Enqueue Elementor Editor Wizard Modal Scripts for AI-Generated Pages or Context-Guided Adaptation
  */
 add_action('elementor/editor/after_enqueue_scripts', function() {
+    if (!supercraft_sitebuilder_is_validated()) {
+        return;
+    }
+
     $post_id = get_the_ID();
     if (!$post_id && isset($_GET['post'])) {
         $post_id = intval($_GET['post']);

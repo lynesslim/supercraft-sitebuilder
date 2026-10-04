@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Supercraft SiteBuilder
  * Description: Human-guided AI website builder child plugin for Supercraft Master Plugin ecosystem.
- * Version: 1.0.28
+ * Version: 1.0.29
  * Author: Supercraft
  * Text Domain: supercraft-sitebuilder
  */
@@ -11,7 +11,7 @@ if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly
 }
 
-define('SUPERCRAFT_SITEBUILDER_VERSION', '1.0.28');
+define('SUPERCRAFT_SITEBUILDER_VERSION', '1.0.29');
 define('SUPERCRAFT_SITEBUILDER_PATH', plugin_dir_path(__FILE__));
 define('SUPERCRAFT_SITEBUILDER_URL', plugin_dir_url(__FILE__));
 
@@ -37,6 +37,12 @@ if (file_exists(SUPERCRAFT_SITEBUILDER_PATH . 'plugin-update-checker/plugin-upda
         'supercraft-sitebuilder'
     );
     $supercraft_sitebuilder_update_checker->setBranch('main');
+
+    // Set GitHub Personal Access Token if defined in wp-config.php or saved in settings (prevents 403 rate limit errors)
+    $githubToken = defined('SUPERCRAFT_GITHUB_TOKEN') ? SUPERCRAFT_GITHUB_TOKEN : get_option('supercraft_github_token', '');
+    if (!empty($githubToken)) {
+        $supercraft_sitebuilder_update_checker->setAuthentication($githubToken);
+    }
 }
 
 /**

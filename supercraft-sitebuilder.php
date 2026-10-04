@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Supercraft SiteBuilder
  * Description: Human-guided AI website builder child plugin for Supercraft Master Plugin ecosystem.
- * Version: 1.0.29
+ * Version: 1.0.30
  * Author: Supercraft
  * Text Domain: supercraft-sitebuilder
  */
@@ -11,7 +11,7 @@ if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly
 }
 
-define('SUPERCRAFT_SITEBUILDER_VERSION', '1.0.29');
+define('SUPERCRAFT_SITEBUILDER_VERSION', '1.0.30');
 define('SUPERCRAFT_SITEBUILDER_PATH', plugin_dir_path(__FILE__));
 define('SUPERCRAFT_SITEBUILDER_URL', plugin_dir_url(__FILE__));
 
@@ -264,6 +264,42 @@ function supercraft_sitebuilder_render_admin_page() {
             if (!is_wp_error($response)) {
                 $body_data = json_decode(wp_remote_retrieve_body($response), true);
                 
+                // Fallback: If remote API returned sitemap but not business_context yet, synthesize business context
+                if (empty($body_data['business_context']) && !empty($body_data['sitemap']) && is_array($body_data['sitemap'])) {
+                    $derived_name = 'Your Business';
+                    $derived_summary = '';
+                    $derived_services = [];
+                    foreach ($body_data['sitemap'] as $p) {
+                        if (!empty($p['sections']) && is_array($p['sections'])) {
+                            foreach ($p['sections'] as $sec) {
+                                if (empty($derived_summary) && !empty($sec['body_text'])) {
+                                    $derived_summary = $sec['body_text'];
+                                }
+                                if ($derived_name === 'Your Business' && !empty($sec['heading']) && (empty($sec['section_type']) || $sec['section_type'] === 'hero')) {
+                                    $derived_name = $sec['heading'];
+                                }
+                                if (!empty($sec['items']) && is_array($sec['items'])) {
+                                    foreach ($sec['items'] as $it) {
+                                        if (!empty($it['title'])) {
+                                            $derived_services[] = [
+                                                'title' => $it['title'],
+                                                'description' => $it['description'] ?? '',
+                                            ];
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    $body_data['business_context'] = [
+                        'business_name'   => $derived_name,
+                        'summary'         => $derived_summary ?: 'Extracted business profile and positioning.',
+                        'services'        => $derived_services,
+                        'target_audience' => 'Target Clients & Customers',
+                        'brand_voice'     => 'Professional, authoritative, yet engaging',
+                    ];
+                }
+
                 // Store business context globally whenever returned
                 if (isset($body_data['business_context']) && is_array($body_data['business_context'])) {
                     update_option('supercraft_business_context', $body_data['business_context']);

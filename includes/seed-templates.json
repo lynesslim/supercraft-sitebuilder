@@ -1,0 +1,210 @@
+{
+  "hero": [
+    {
+      "id": "hero-split-01",
+      "title": "Hero Split Screen with Image",
+      "section_type": "hero",
+      "design_tags": ["multi"],
+      "thumbnail_url": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80",
+      "elementor_data": [
+        {
+          "id": "c_hero_root",
+          "elType": "container",
+          "isInner": false,
+          "settings": { "flex_direction": "row", "padding": { "unit": "px", "top": "80", "bottom": "80", "left": "20", "right": "20" } },
+          "elements": [
+            {
+              "id": "w_hero_head",
+              "elType": "widget",
+              "widgetType": "heading",
+              "settings": { "title": "YOUR_HEADING_HERE", "header_size": "h1" }
+            },
+            {
+              "id": "w_hero_sub",
+              "elType": "widget",
+              "widgetType": "text-editor",
+              "settings": { "editor": "<p>YOUR_SUBHEADING_HERE</p>" }
+            },
+            {
+              "id": "w_hero_btn",
+              "elType": "widget",
+              "widgetType": "button",
+              "settings": { "text": "YOUR_CTA_LABEL", "button_type": "success" }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "features": [
+    {
+      "id": "features-grid-multi",
+      "title": "Dynamic Feature Grid Cards",
+      "section_type": "features",
+      "design_tags": ["multi", "3-points", "4-points"],
+      "thumbnail_url": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=600&q=80",
+      "elementor_data": [
+        {
+          "id": "c_feat_root",
+          "elType": "container",
+          "isInner": false,
+          "settings": { "flex_direction": "column", "padding": { "unit": "px", "top": "60", "bottom": "60", "left": "20", "right": "20" } },
+          "elements": [
+            {
+              "id": "w_feat_title",
+              "elType": "widget",
+              "widgetType": "heading",
+              "settings": { "title": "YOUR_HEADING_HERE", "align": "center" }
+            },
+            {
+              "id": "w_feat_sub",
+              "elType": "widget",
+              "widgetType": "text-editor",
+              "settings": { "editor": "<p>YOUR_SUBHEADING_HERE</p>", "align": "center" }
+            },
+            {
+              "id": "c_feat_grid",
+              "elType": "container",
+              "isInner": true,
+              "settings": { "flex_direction": "row", "flex_wrap": "wrap", "gap": { "unit": "px", "size": 24 } },
+              "elements": [
+                {
+                  "id": "c_feat_item_1",
+                  "elType": "container",
+                  "isInner": true,
+                  "settings": { "width": { "unit": "%", "size": 30 }, "padding": { "unit": "px", "top": "24", "bottom": "24", "left": "20", "right": "20" }, "background_color": "#F8FAFC", "border_radius": { "unit": "px", "size": 8 } },
+                  "elements": [
+                    { "id": "w_feat_item_head_1", "elType": "widget", "widgetType": "heading", "settings": { "title": "ITEM_HEADING", "header_size": "h3" } },
+                    { "id": "w_feat_item_desc_1", "elType": "widget", "widgetType": "text-editor", "settings": { "editor": "<p>ITEM_DESCRIPTION</p>" } }
+                  ]
+                },
+                {
+                  "id": "c_feat_item_2",
+                  "elType": "container",
+                  "isInner": true,
+                  "settings": { "width": { "unit": "%", "size": 30 }, "padding": { "unit": "px", "top": "24", "bottom": "24", "left": "20", "right": "20" }, "background_color": "#F8FAFC", "border_radius": { "unit": "px", "size": 8 } },
+                  "elements": [
+                    { "id": "w_feat_item_head_2", "elType": "widget", "widgetType": "heading", "settings": { "title": "ITEM_HEADING", "header_size": "h3" } },
+                    { "id": "w_feat_item_desc_2", "elType": "widget", "widgetType": "text-editor", "settings": { "editor": "<p>ITEM_DESCRIPTION</p>" } }
+                  ]
+                },
+                {
+                  "id": "c_feat_item_3",
+                  "elType": "container",
+                  "isInner": true,
+                  "settings": { "width": { "unit": "%", "size": 30 }, "padding": { "unit": "px", "top": "24", "bottom": "24", "left": "20", "right": "20" }, "background_color": "#F8FAFC", "border_radius": { "unit": "px", "size": 8 } },
+                  "elements": [
+                    { "id": "w_feat_item_head_3", "elType": "widget", "widgetType": "heading", "settings": { "title": "ITEM_HEADING", "header_size": "h3" } },
+                    { "id": "w_feat_item_desc_3", "elType": "widget", "widgetType": "text-editor", "settings": { "editor": "<p>ITEM_DESCRIPTION</p>" } }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "services": [
+    {
+      "id": "services-cards-multi",
+      "title": "Interactive Services Showcase",
+      "section_type": "services",
+      "design_tags": ["multi", "3-points", "4-points"],
+      "thumbnail_url": "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=600&q=80",
+      "elementor_data": [
+        {
+          "id": "c_serv_root",
+          "elType": "container",
+          "isInner": false,
+          "settings": { "flex_direction": "column", "padding": { "unit": "px", "top": "60", "bottom": "60", "left": "20", "right": "20" } },
+          "elements": [
+            {
+              "id": "w_serv_head",
+              "elType": "widget",
+              "widgetType": "heading",
+              "settings": { "title": "YOUR_HEADING_HERE" }
+            },
+            {
+              "id": "w_serv_sub",
+              "elType": "widget",
+              "widgetType": "text-editor",
+              "settings": { "editor": "<p>YOUR_SUBHEADING_HERE</p>" }
+            },
+            {
+              "id": "c_serv_grid",
+              "elType": "container",
+              "isInner": true,
+              "settings": { "flex_direction": "row", "flex_wrap": "wrap", "gap": { "unit": "px", "size": 20 } },
+              "elements": [
+                {
+                  "id": "c_serv_item_1",
+                  "elType": "container",
+                  "isInner": true,
+                  "settings": { "width": { "unit": "%", "size": 48 }, "padding": { "unit": "px", "top": "20", "bottom": "20", "left": "20", "right": "20" }, "background_color": "#FFFFFF", "border_width": { "unit": "px", "top": 1, "right": 1, "bottom": 1, "left": 1 } },
+                  "elements": [
+                    { "id": "w_serv_item_head_1", "elType": "widget", "widgetType": "heading", "settings": { "title": "ITEM_HEADING" } },
+                    { "id": "w_serv_item_desc_1", "elType": "widget", "widgetType": "text-editor", "settings": { "editor": "<p>ITEM_DESCRIPTION</p>" } }
+                  ]
+                },
+                {
+                  "id": "c_serv_item_2",
+                  "elType": "container",
+                  "isInner": true,
+                  "settings": { "width": { "unit": "%", "size": 48 }, "padding": { "unit": "px", "top": "20", "bottom": "20", "left": "20", "right": "20" }, "background_color": "#FFFFFF", "border_width": { "unit": "px", "top": 1, "right": 1, "bottom": 1, "left": 1 } },
+                  "elements": [
+                    { "id": "w_serv_item_head_2", "elType": "widget", "widgetType": "heading", "settings": { "title": "ITEM_HEADING" } },
+                    { "id": "w_serv_item_desc_2", "elType": "widget", "widgetType": "text-editor", "settings": { "editor": "<p>ITEM_DESCRIPTION</p>" } }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "about": [
+    {
+      "id": "about-story-01",
+      "title": "About Story & Vision",
+      "section_type": "about",
+      "design_tags": ["multi"],
+      "thumbnail_url": "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=600&q=80",
+      "elementor_data": [
+        {
+          "id": "c_about_root",
+          "elType": "container",
+          "isInner": false,
+          "elements": [
+            { "id": "w_about_title", "elType": "widget", "widgetType": "heading", "settings": { "title": "YOUR_HEADING_HERE" } },
+            { "id": "w_about_sub", "elType": "widget", "widgetType": "heading", "settings": { "title": "YOUR_SUBHEADING_HERE", "header_size": "h4" } },
+            { "id": "w_about_body", "elType": "widget", "widgetType": "text-editor", "settings": { "editor": "<p>YOUR_BODY_TEXT_HERE</p>" } }
+          ]
+        }
+      ]
+    }
+  ],
+  "cta": [
+    {
+      "id": "cta-banner-01",
+      "title": "High Conversion Call To Action",
+      "section_type": "cta",
+      "design_tags": ["2-points"],
+      "thumbnail_url": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80",
+      "elementor_data": [
+        {
+          "id": "c_cta_root",
+          "elType": "container",
+          "isInner": false,
+          "settings": { "background_color": "#2563EB", "padding": { "unit": "px", "top": "50", "bottom": "50", "left": "20", "right": "20" } },
+          "elements": [
+            { "id": "w_cta_title", "elType": "widget", "widgetType": "heading", "settings": { "title": "YOUR_HEADING_HERE", "title_color": "#FFFFFF" } },
+            { "id": "w_cta_sub", "elType": "widget", "widgetType": "text-editor", "settings": { "editor": "<p>YOUR_SUBHEADING_HERE</p>", "text_color": "#E0E7FF" } },
+            { "id": "w_cta_btn", "elType": "widget", "widgetType": "button", "settings": { "text": "YOUR_CTA_LABEL" } }
+          ]
+        }
+      ]
+    }
+  ]
+}

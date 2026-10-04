@@ -1,0 +1,11 @@
+# Task 1: Audit and Enhance supercraft-superapp API Routes
+
+Please inspect and enhance the Next.js API routes in `/Volumes/T7/Lyness/SAAS/Supercraft/supercraft-superapp`:
+1. `src/app/api/sitebuilder/parse-doc/route.ts`
+2. `src/app/api/sitebuilder/components/route.ts`
+
+Requirements:
+- Ensure strict JSON validation and robust error handling.
+- Ensure CORS headers allow requests from WordPress localhost/staging origins if needed.
+- Ensure fallback parser properly handles Markdown headers, bullet points, and unstructured text.
+- Ensure component catalog provides valid Elementor container & widget JSON structures for hero, about, features, testimonials, cta, and footer.

@@ -1,0 +1,258 @@
+/* Supercraft AI SiteBuilder Admin Styles */
+.supercraft-builder-wrap {
+    max-width: 1080px;
+    margin-top: 20px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+.supercraft-card-box {
+    background: #171914;
+    color: #e8eae0;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+    padding: 24px;
+    margin-bottom: 24px;
+}
+
+.supercraft-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 6px;
+}
+
+.supercraft-badge-root {
+    background: rgba(163, 184, 64, 0.15);
+    color: #a3b840;
+    border: 1px solid rgba(163, 184, 64, 0.3);
+}
+
+.supercraft-badge-sub {
+    background: rgba(245, 158, 11, 0.15);
+    color: #fbbf24;
+    border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.supercraft-badge-category {
+    background: rgba(59, 130, 246, 0.15);
+    color: #93c5fd;
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    text-transform: uppercase;
+    font-size: 10px;
+}
+
+.supercraft-badge-tag {
+    background: rgba(168, 85, 247, 0.15);
+    color: #d8b4fe;
+    border: 1px solid rgba(168, 85, 247, 0.3);
+    font-size: 10px;
+}
+
+.supercraft-tree-group {
+    margin-bottom: 16px;
+}
+
+.supercraft-page-card {
+    background: #191b15;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 8px;
+    transition: border-color 0.2s;
+}
+
+.supercraft-page-card:hover {
+    border-color: rgba(163, 184, 64, 0.3);
+}
+
+.supercraft-subpage-card {
+    background: #141611;
+    border: 1px solid rgba(245, 158, 11, 0.25);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
+.supercraft-page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.supercraft-page-header:hover {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.supercraft-nested-subpages {
+    margin-left: 24px;
+    padding-left: 18px;
+    border-left: 2px dashed rgba(245, 158, 11, 0.35);
+    margin-top: 8px;
+    margin-bottom: 12px;
+}
+
+.supercraft-sections-container {
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 12px 16px;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.supercraft-section-item {
+    background: #171913;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 8px;
+    margin-bottom: 8px;
+    overflow: hidden;
+}
+
+.supercraft-section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.supercraft-section-header:hover {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.supercraft-section-content {
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 12px 14px;
+    background: #10120d;
+    font-size: 12px;
+}
+
+.supercraft-repeater-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.supercraft-repeater-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 6px;
+    padding: 8px 10px;
+}
+
+.supercraft-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 16px;
+    background: #12140f;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    margin-bottom: 16px;
+}
+
+.supercraft-btn-tool {
+    background: rgba(255, 255, 255, 0.06);
+    color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s;
+}
+
+.supercraft-btn-tool:hover {
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+}
+
+.supercraft-btn-primary {
+    background: #a3b840 !important;
+    color: #111310 !important;
+    border: none !important;
+    font-weight: 700 !important;
+    border-radius: 8px !important;
+    padding: 8px 20px !important;
+    cursor: pointer !important;
+    box-shadow: 0 4px 12px rgba(163, 184, 64, 0.25) !important;
+    text-decoration: none !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: background 0.15s, transform 0.1s !important;
+}
+
+.supercraft-btn-primary:hover {
+    background: #b8ce4a !important;
+    transform: translateY(-1px);
+}
+
+.supercraft-input-text {
+    background: #111310 !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    color: #fff !important;
+    border-radius: 6px !important;
+    padding: 4px 8px !important;
+    font-size: 12px !important;
+}
+
+.supercraft-input-text:focus {
+    border-color: #a3b840 !important;
+    box-shadow: 0 0 0 1px #a3b840 !important;
+}
+
+/* Summary Table (Stage 3) - Prevents WP default white alternating row bleed */
+.supercraft-summary-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: #191b15 !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 12px;
+    overflow: hidden;
+    color: #fff !important;
+    margin-top: 12px;
+}
+
+.supercraft-summary-table th {
+    background: #12140f !important;
+    color: rgba(255, 255, 255, 0.7) !important;
+    font-weight: 600 !important;
+    font-size: 12px !important;
+    padding: 14px 16px !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    text-align: left;
+}
+
+.supercraft-summary-table td {
+    padding: 14px 16px !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+    vertical-align: middle !important;
+    color: #fff !important;
+    background: #191b15 !important;
+}
+
+.supercraft-summary-table tbody tr:nth-child(even) td {
+    background: #161813 !important;
+}
+
+.supercraft-summary-table tbody tr:hover td {
+    background: rgba(163, 184, 64, 0.06) !important;
+}
+
+.supercraft-summary-table code {
+    background: rgba(255, 255, 255, 0.08) !important;
+    color: rgba(255, 255, 255, 0.8) !important;
+    padding: 4px 8px !important;
+    border-radius: 4px !important;
+    font-size: 11px !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}

@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Supercraft SiteBuilder
  * Description: Human-guided AI website builder child plugin for Supercraft Master Plugin ecosystem.
- * Version: 1.0.27
+ * Version: 1.0.28
  * Author: Supercraft
  * Text Domain: supercraft-sitebuilder
  */
@@ -11,7 +11,7 @@ if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly
 }
 
-define('SUPERCRAFT_SITEBUILDER_VERSION', '1.0.27');
+define('SUPERCRAFT_SITEBUILDER_VERSION', '1.0.28');
 define('SUPERCRAFT_SITEBUILDER_PATH', plugin_dir_path(__FILE__));
 define('SUPERCRAFT_SITEBUILDER_URL', plugin_dir_url(__FILE__));
 
@@ -21,7 +21,7 @@ if (defined('SUPERCRAFT_SUPERAPP_URL')) {
 } elseif (defined('SUPERCRAFT_LOCAL_DEV') && SUPERCRAFT_LOCAL_DEV) {
     $endpoint = (file_exists('/.dockerenv') || getenv('WORDPRESS_DB_HOST')) ? 'http://host.docker.internal:3000/api/sitebuilder' : 'http://localhost:3000/api/sitebuilder';
 } else {
-    $endpoint = 'http://host.docker.internal:3000/api/sitebuilder'; // Points to local Superapp dev server when testing locally
+    $endpoint = 'https://superapp.supercraft.my/api/sitebuilder';
 }
 
 define('SUPERCRAFT_SUPERAPP_ENDPOINT', $endpoint);

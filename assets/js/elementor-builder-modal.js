@@ -2489,7 +2489,7 @@
                 const userPrompt = $('#supercraft-adapt-user-prompt').val() || '';
                 const apiEndpoint = (window.supercraftBuilderVars && window.supercraftBuilderVars.apiEndpoint) 
                     ? window.supercraftBuilderVars.apiEndpoint.replace('host.docker.internal', 'localhost') 
-                    : 'http://localhost:3000/api/sitebuilder';
+                    : 'https://superapp.supercraft.my/api/sitebuilder';
                 const businessContext = (window.supercraftBuilderVars && window.supercraftBuilderVars.businessContext) || null;
 
                 $.ajax({
@@ -2539,7 +2539,7 @@
 
             const apiEndpoint = (window.supercraftBuilderVars && window.supercraftBuilderVars.apiEndpoint) 
                 ? window.supercraftBuilderVars.apiEndpoint.replace('host.docker.internal', 'localhost') 
-                : 'http://localhost:3000/api/sitebuilder';
+                : 'https://superapp.supercraft.my/api/sitebuilder';
             const businessContext = (window.supercraftBuilderVars && window.supercraftBuilderVars.businessContext) || null;
             const userPrompt = $('#supercraft-adapt-user-prompt').val() || '';
 
@@ -2643,7 +2643,7 @@
 
             const apiEndpoint = (window.supercraftBuilderVars && window.supercraftBuilderVars.apiEndpoint) 
                 ? window.supercraftBuilderVars.apiEndpoint.replace('host.docker.internal', 'localhost') 
-                : 'http://localhost:3000/api/sitebuilder';
+                : 'https://superapp.supercraft.my/api/sitebuilder';
 
             // Build rich document context from all sections
             let docSummary = '';

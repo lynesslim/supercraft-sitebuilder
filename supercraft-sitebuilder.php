@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Supercraft SiteBuilder
  * Description: Human-guided AI website builder child plugin for Supercraft Master Plugin ecosystem.
- * Version: 1.0.30
+ * Version: 1.0.31
  * Author: Supercraft
  * Text Domain: supercraft-sitebuilder
  */
@@ -11,7 +11,7 @@ if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly
 }
 
-define('SUPERCRAFT_SITEBUILDER_VERSION', '1.0.30');
+define('SUPERCRAFT_SITEBUILDER_VERSION', '1.0.31');
 define('SUPERCRAFT_SITEBUILDER_PATH', plugin_dir_path(__FILE__));
 define('SUPERCRAFT_SITEBUILDER_URL', plugin_dir_url(__FILE__));
 
@@ -219,6 +219,8 @@ function supercraft_sitebuilder_render_admin_page() {
 
         $selected_model = defined('SUPERCRAFT_SITEBUILDER_MODEL') ? SUPERCRAFT_SITEBUILDER_MODEL : 'gpt-5.4-nano-2026-03-17';
         $sitebuilder_mode = isset($_POST['sitebuilder_mode']) && $_POST['sitebuilder_mode'] === 'context_only' ? 'context_only' : 'full';
+        // Superapp returns only after AI parsing completes, which can exceed one minute.
+        $parse_timeout = 180;
 
         if ($has_file) {
             // Forward raw file bytes via multipart/form-data so Mammoth & pdf-parse handle extraction
@@ -243,7 +245,7 @@ function supercraft_sitebuilder_render_admin_page() {
             $response = wp_remote_post(SUPERCRAFT_SUPERAPP_ENDPOINT . '/parse-doc', [
                 'headers' => ['content-type' => 'multipart/form-data; boundary=' . $boundary],
                 'body'    => $body,
-                'timeout' => 60,
+                'timeout' => $parse_timeout,
             ]);
         } elseif (!empty($raw_text)) {
             // Forward pasted text via JSON
@@ -254,7 +256,7 @@ function supercraft_sitebuilder_render_admin_page() {
                     'model'         => $selected_model,
                     'mode'          => $sitebuilder_mode,
                 ]),
-                'timeout' => 60,
+                'timeout' => $parse_timeout,
             ]);
         } else {
             $message = "<div class='notice notice-error'><p>" . esc_html__('Please select a file or paste text to parse.', 'supercraft-sitebuilder') . "</p></div>";
@@ -326,7 +328,7 @@ function supercraft_sitebuilder_render_admin_page() {
                 }
             } else {
                 $err_msg = esc_html($response->get_error_message());
-                $message = "<div class='notice notice-error'><p>Failed to connect to superapp endpoint (" . esc_html(SUPERCRAFT_SUPERAPP_ENDPOINT) . "): {$err_msg}</p></div>";
+                $message = "<div class='notice notice-error'><p>Superapp document parsing request failed (" . esc_html(SUPERCRAFT_SUPERAPP_ENDPOINT . '/parse-doc') . "): {$err_msg}</p></div>";
             }
         }
     }
@@ -827,7 +829,20 @@ function supercraft_sitebuilder_render_admin_page() {
         <?php endif; ?>
 
         <!-- Stage 3: Summary Table with Direct Elementor Links -->
-        <?php if (!empty($created_pages_summary)): ?>
+        <?php if (!empty($created_pages_summary)):
+            // Group both newly created and saved results beneath their parent rows.
+            $summary_tree = supercraft_sitebuilder_build_tree($created_pages_summary);
+            $summary_rows = [];
+            foreach ($summary_tree['roots'] as $root) {
+                $summary_rows[] = $root['page'];
+                foreach ($root['subpages'] as $subpage) {
+                    $summary_rows[] = $subpage['page'];
+                }
+            }
+            foreach ($summary_tree['orphans'] as $orphan) {
+                $summary_rows[] = $orphan['page'];
+            }
+        ?>
             <div class="supercraft-card-box">
                 <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:16px;">
                     <div style="display:flex; align-items:center; gap:8px;">
@@ -853,7 +868,7 @@ function supercraft_sitebuilder_render_admin_page() {
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($created_pages_summary as $page): 
+                        <?php foreach ($summary_rows as $page):
                             $is_subpage = !empty($page['parent_slug']);
                         ?>
                             <tr style="border-color:rgba(255,255,255,0.06);">
